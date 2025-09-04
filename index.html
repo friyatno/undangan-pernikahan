@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Undangan Pernikahan Natural Futuristik</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto&display=swap" rel="stylesheet" />
+  <style>
+    /* Reset & base */
+    * {
+      box-sizing: border-box;
+      margin: 0; padding: 0;
+    }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #f0f4f1, #d9e4d6, #b7c9b0);
+      color: #3a3a3a;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .container {
+      background: rgba(245, 245, 235, 0.95);
+      border-radius: 20px;
+      max-width: 440px;
+      width: 100%;
+      padding: 30px 25px;
+      box-shadow:
+        0 0 15px rgba(107, 142, 35, 0.4),
+        0 0 30px rgba(107, 142, 35, 0.3);
+      backdrop-filter: blur(10px);
+      animation: fadeInUp 1s ease forwards;
+      color: #2f3e2f;
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 500;
+      font-size: 2.5rem;
+      text-align: center;
+      color: #4a6a3a;
+      margin-bottom: 10px;
+      letter-spacing: 0.15em;
+      text-shadow: 0 0 6px #a3c293;
+    }
+    p.subtitle {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #6b8e23;
+      margin-bottom: 25px;
+      letter-spacing: 0.05em;
+    }
+    img.main-image {
+      width: 100%;
+      border-radius: 15px;
+      margin-bottom: 25px;
+      box-shadow: 0 0 15px #a3c293;
+      transition: transform 0.3s ease;
+    }
+    img.main-image:hover {
+      transform: scale(1.05);
+    }
+    section {
+      margin-bottom: 30px;
+    }
+    h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 500;
+      font-size: 1.3rem;
+      color: #4a6a3a;
+      margin-bottom: 15px;
+      border-bottom: 1.5px solid #a3c293;
+      padding-bottom: 5px;
+      letter-spacing: 0.1em;
+    }
+    .details, .bank-info, .address-info {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: #3a4a2f;
+    }
+    .details strong, .bank-info strong, .address-info strong {
+      color: #6b8e23;
+    }
+    .bank-info {
+      background: rgba(163, 194, 147, 0.15);
+      padding: 15px 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px #a3c293 inset;
+    }
+    .bank-logo {
+      display: block;
+      margin: 15px auto 0;
+      width: 120px;
+      filter: drop-shadow(0 0 5px #6b8e23);
+      transition: filter 0.3s ease;
+    }
+    .bank-logo:hover {
+      filter: drop-shadow(0 0 15px #a3c293);
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    input[type="text"], textarea {
+      background: rgba(255 255 255 / 0.9);
+      border: 1.5px solid #6b8e23;
+      border-radius: 12px;
+      padding: 12px 15px;
+      color: #2f3e2f;
+      font-size: 1rem;
+      font-family: 'Roboto', sans-serif;
+      transition: border-color 0.3s ease;
+      resize: vertical;
+    }
+    input[type="text"]::placeholder,
+    textarea::placeholder {
+      color: #8cae6d;
+    }
+    input[type="text"]:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #a3c293;
+      box-shadow: 0 0 8px #a3c293;
+      background: rgba(255 255 255 / 1);
+    }
+    button {
+      background: #6b8e23;
+      color: #f0f4f1;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 15px;
+      padding: 14px 0;
+      cursor: pointer;
+      letter-spacing: 0.1em;
+      box-shadow: 0 0 15px #a3c293;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+    button:hover {
+      background: #8cae6d;
+      box-shadow: 0 0 25px #a3c293;
+    }
+    #ucapanList {
+      max-height: 180px;
+      overflow-y: auto;
+      background: rgba(255 255 255 / 0.7);
+      border-radius: 12px;
+      padding: 15px;
+      font-size: 0.9rem;
+      color: #3a4a2f;
+      box-shadow: inset 0 0 10px #a3c293;
+    }
+    #ucapanList::-webkit-scrollbar {
+      width: 6px;
+    }
+    #ucapanList::-webkit-scrollbar-thumb {
+      background: #6b8e23;
+      border-radius: 3px;
+    }
+    .ucapan-item {
+      margin-bottom: 12px;
+      border-bottom: 1px solid #a3c293;
+      padding-bottom: 8px;
+    }
+    .ucapan-item:last-child {
+      border-bottom: none;
+    }
+    .ucapan-item strong {
+      color: #4a6a3a;
+      display: block;
+      margin-bottom: 4px;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+    /* Peta responsif */
+    .map-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 0 15px #a3c293;
+      margin-top: 15px;
+    }
+    .map-container iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      border-radius: 15px;
+      filter: drop-shadow(0 0 5px #6b8e23);
+      transition: filter 0.3s ease;
+    }
+    .map-container iframe:hover {
+      filter: drop-shadow(0 0 15px #a3c293);
+    }
+    @media (max-width: 480px) {
+      .container {
+        padding: 20px 15px;
+        max-width: 100%;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      h2 {
+        font-size: 1.1rem;
+      }
+      .bank-logo {
+        width: 90px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container" role="main" aria-label="Undangan Pernikahan">
+    <h1>UNDANGAN</h1>
+    <p class="subtitle">Kami mengundang Anda untuk merayakan hari bahagia kami</p>
+    <img
+      src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0db846e1-1446-49d8-a15c-a9876de7e09f.png"
+      alt="Foto pasangan pengantin memeluk di depan pohon hijau dengan latar belakang taman alam, bunga-bunga eksotis, cahaya matahari sore yang hangat, komposisi vertikal dengan elemen alami hijau dan hijau daun, nuansa futuristik lembut dengan glow natural"
+      class="main-image"
+      loading="lazy"
+      onerror="this.style.display='none';"
+    />
+
+    <section aria-labelledby="detail-acara-title">
+      <h2 id="detail-acara-title">Detail Acara</h2>
+      <div class="details">
+        <p><strong>Tanggal:</strong> 20 Agustus 2024</p>
+        <p><strong>Waktu:</strong> 10.00 WIB - Selesai</p>
+        <p><strong>Tempat:</strong> Gedung Serbaguna Harmoni, Jakarta</p>
+        <p><strong>Pengantin:</strong> Andi & Sari</p>
+        <p><strong>Kontak:</strong> 0812-3456-7890</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="address-title">
+      <h2 id="address-title">Lokasi Acara</h2>
+      <div class="address-info">
+        <p><strong>Alamat:</strong> Jl. Melati No. 45, Jakarta Selatan, DKI Jakarta</p>
+        <div class="map-container" aria-label="Peta lokasi acara pernikahan">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.1234567890123!2d106.8271533153167!3d-6.175110995535!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3e0a1b2c3d5%3A0x123456789abcdef!2sGedung%20Serbaguna%20Harmoni!5e0!3m2!1sid!2sid!4v1680000000000!5m2!1sid!2sid"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Peta lokasi Gedung Serbaguna Harmoni"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="bank-info-title">
+      <h2 id="bank-info-title">Nomor Rekening Hadiah</h2>
+      <div class="bank-info" role="contentinfo">
+        <p><strong>Bank:</strong> BCA</p>
+        <p><strong>No. Rekening:</strong> 1234 5678 9012</p>
+        <p><strong>Atas Nama:</strong> Andi & Sari</p>
+        <img
+          src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/5a6ab67a-b25f-427f-a780-4c2e77c31e7c.png"
+          alt="Logo bank BCA dengan desain modern futuristik natural, latar belakang hijau daun halus dengan akzent krem, huruf putih elegan, ikon bank minimalis dengan glow natural hijau"
+          class="bank-logo"
+          loading="lazy"
+          onerror="this.style.display='none';"
+        />
+      </div>
+    </section>
+
+    <section aria-labelledby="form-ucapan-title">
+      <h2 id="form-ucapan-title">Kirim Ucapan Pernikahan</h2>
+      <form id="ucapanForm" onsubmit="return false;">
+        <input type="text" id="nama" name="nama" placeholder="Nama Anda" autocomplete="off" required />
+        <textarea id="ucapan" name="ucapan" placeholder="Tulis ucapan pernikahan Anda..." rows="4" required></textarea>
+        <button type="submit" aria-label="Kirim ucapan pernikahan">Kirim Ucapan</button>
+      </form>
+    </section>
+
+    <section aria-labelledby="list-ucapan-title">
+      <h2 id="list-ucapan-title">Ucapan dari Tamu</h2>
+      <div id="ucapanList" aria-live="polite" aria-relevant="additions" aria-atomic="false">
+        <p style="color:#555; font-style: italic; text-align:center;">Memuat ucapan...</p>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwOXlUCRPQwbhd93eU0f3xfIEWO9oU4GokKBuOEN7R2wXZ4TST2_raad1OMlWzZe76J/exec'; // Ganti dengan URL Apps Script Anda
+
+    const form = document.getElementById('ucapanForm');
+    const namaInput = document.getElementById('nama');
+    const ucapanInput = document.getElementById('ucapan');
+    const ucapanList = document.getElementById('ucapanList');
+
+    form.addEventListener('submit', async () => {
+      const nama = namaInput.value.trim();
+      const ucapan = ucapanInput.value.trim();
+
+      if (!nama || !ucapan) {
+        alert('Mohon isi nama dan ucapan Anda.');
+        return;
+      }
+
+      try {
+        const response = await fetch(`${scriptURL}?nama=${encodeURIComponent(nama)}&ucapan=${encodeURIComponent(ucapan)}`, {
+          method: 'POST',
+        });
+        if (response.ok) {
+          alert('Ucapan berhasil dikirim! Terima kasih.');
+          namaInput.value = '';
+          ucapanInput.value = '';
+          loadUcapan();
+        } else {
+          alert('Gagal mengirim ucapan. Silakan coba lagi.');
+        }
+      } catch (error) {
+        alert('Terjadi kesalahan: ' + error.message);
+      }
+    });
+
+    async function loadUcapan() {
+      try {
+        const response = await fetch(scriptURL);
+        const data = await response.json();
+        ucapanList.innerHTML = '';
+
+        if (!data.length) {
+          ucapanList.innerHTML = '<p style="color:#555; font-style: italic; text-align:center;">Belum ada ucapan. Jadilah yang pertama!</p>';
+          return;
+        }
+
+        data.forEach(({ nama, ucapan }) => {
+          const div = document.createElement('div');
+          div.className = 'ucapan-item';
+          div.innerHTML = `<strong>${nama}</strong><p>${ucapan}</p>`;
+          ucapanList.appendChild(div);
+        });
+      } catch {
+        ucapanList.innerHTML = '<p style="color:#555; font-style: italic; text-align:center;">Gagal memuat ucapan. Silakan refresh halaman.</p>';
+      }
+    }
+
+    loadUcapan();
+  </script>
+</body>
+</html>
+</content>
+</create_file>
